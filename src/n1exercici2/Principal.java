@@ -4,25 +4,32 @@ public class Principal {
 
 	public static void main(String[] args) {
 
-		Persona hola = new Persona("hola", 1, 2);
-		System.out.println(hola.mostrarTipo());
-		Persona hola2 = new Persona(4, "hola", 2); // cambiamos el orden para demostrar que acepta cualquer tipo de parametro
-		System.out.println(hola2.mostrarTipo());
+		GenericMethods<String> una = new GenericMethods<String>();
+		una.setPrimero("Daniel");
+		System.out.println(una.getPrimero());
+		
+		Persona pers1 = new Persona("Juan", "Sanchez", 66);
+		GenericMethods<Persona> otra = new GenericMethods<Persona>();
+		otra.setPrimero(pers1);
+		GenericMethods hola = new GenericMethods();
+		hola.setAll("Palabra", pers1, 3);
+	    //GenericMethods<T> otra2 = new GenericMethods<T>();
+		//otra.setAll(pers1, pers1, pers1);
+		System.out.println(otra.getPrimero());
+		System.out.println(hola.getAll());
+
 	}
-}
 
-class genericPersona {
+	public static class Persona {
 
-	private String nombre;
-	private int edad;
+		private String nombre;
+		private String cognom;
+		private int edad;
 
-	public genericPersona(String nombre, int edad) {
-		this.nombre = nombre;
-		this.edad = edad;
-	}
-
-	public String ToString() {
-		return nombre + " " + edad;
-
+		public Persona(String nombre, String cognom, int edad) {
+			this.nombre = nombre;
+			this.cognom = cognom;
+			this.edad = edad;
+		}
 	}
 }
